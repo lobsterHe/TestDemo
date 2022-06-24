@@ -24,4 +24,28 @@ public class ApiResponse<T> {
     public static ApiResponse error(String code, String errorMsg) {
         return new ApiResponse(code, errorMsg);
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
 }
