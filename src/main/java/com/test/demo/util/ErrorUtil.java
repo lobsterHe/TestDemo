@@ -11,7 +11,6 @@ public class ErrorUtil {
      * @return
      */
     public static String errorInfoToString(Throwable e) {
-        //try-with-resource语法糖 处理机制
         try(StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw)){
             e.printStackTrace(pw);
             pw.flush();

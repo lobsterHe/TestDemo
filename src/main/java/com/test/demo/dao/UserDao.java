@@ -19,11 +19,8 @@ public class UserDao {
     public boolean addUser(User user) {
         int id = idGenerate.getAndIncrement();
         user.setId(id);
-        User put = userRepository.put(id, user);
-        if(put!=null){
-            return true;
-        }
-        return false;
+        userRepository.put(id, user);
+        return true;
     }
 
     public boolean updateUser(Integer id, User user) {
