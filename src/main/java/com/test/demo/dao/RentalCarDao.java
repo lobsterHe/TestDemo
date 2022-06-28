@@ -32,6 +32,10 @@ public class RentalCarDao {
 
     public boolean rentalCar(CarVo carVo) {
         Car car = rentalCarRepository.get(carVo.getId());
+        if(car==null){
+            throw new BusinessException(ExceptionEnum.NO_THIS_CAR);
+        }
+
         if(car.getStock() == 0){
             throw new BusinessException(ExceptionEnum.NO_STOCK);
         }

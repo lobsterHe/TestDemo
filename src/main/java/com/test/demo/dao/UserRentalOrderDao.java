@@ -1,7 +1,6 @@
 package com.test.demo.dao;
 
 import com.test.demo.constant.RentalOrderEnum;
-import com.test.demo.entity.Car;
 import com.test.demo.entity.RentalOrder;
 import com.test.demo.exception.BusinessException;
 import com.test.demo.exception.ExceptionEnum;

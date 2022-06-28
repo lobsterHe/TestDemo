@@ -23,14 +23,14 @@ public class RentalController {
     private IRentalCarService rentalCarService;
 
     @PostMapping(value="/")
-    @Operation(summary = "rental car")
+    @Operation(summary = "2.租车接口(rental car)")
     public ApiResponse rentalCar(@RequestBody CarVo carVo) {
         RentalOrder order = rentalCarService.rentalCar(carVo);
         return new ApiResponse<RentalOrder>(order);
     }
 
     @DeleteMapping(value="/{id}")
-    @Operation(summary = "returnCar")
+    @Operation(summary = "3.还车接口(returnCar)")
     @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "rental order id", required = true, dataTypeClass = Integer.class)})
     public ApiResponse returnCar(@PathVariable Integer id) {
         boolean success = rentalCarService.returnCar(id);
@@ -38,7 +38,7 @@ public class RentalController {
     }
 
     @GetMapping(value="/")
-    @Operation(summary = "getCarStock")
+    @Operation(summary = "1.获取库存接口(getCarStock)")
     public ApiResponse getCarStock() {
         List<CarDto> dtoList = rentalCarService.getCarStock();
         return new ApiResponse<List<CarDto>>(dtoList);

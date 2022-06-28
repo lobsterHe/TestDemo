@@ -9,7 +9,8 @@ public enum ExceptionEnum {
     NO_STOCK("10003","no stock."),
     ORDER_ID_IS_NOT_EXIST("10004","order is not exist."),
     END_TIME_MORE_THAN_BEGIN_TIME("10005","end time more than the begin time"),
-    BEGIN_TIME_LESS_THAN_NOW_TIME("10006","begin time more than the current time");
+    BEGIN_TIME_LESS_THAN_NOW_TIME("10006","begin time more than the current time"),
+    NO_THIS_CAR("10007","without this car.");
 
     private String code;
 

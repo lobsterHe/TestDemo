@@ -3,7 +3,6 @@ package com.test.demo.rpc;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Date;
 
 @ApiModel("Car")
 public class CarDto {
