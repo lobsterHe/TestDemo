@@ -12,8 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,6 +33,7 @@ public class RentalCarServiceImpl implements IRentalCarService {
         validateParam(carVo.getBeginTime(), "beginTime");
         validateParam(carVo.getEndTime(), "endTime");
         validateParam(carVo.getUserName(), "username");
+        validateTime(carVo.getBeginTime(), carVo.getEndTime());
         // reduce stock
         rentalCarDao.rentalCar(carVo);
         // create rental order
@@ -56,6 +57,15 @@ public class RentalCarServiceImpl implements IRentalCarService {
             String simpleName = object.getClass().getSimpleName();
             logger.error("{} is null", simpleName);
             throw new BusinessException(ExceptionEnum.IS_NOT_NULL.getCode(), String.format(ExceptionEnum.IS_NOT_NULL.getMsg(), desc));
+        }
+    }
+
+    private void validateTime(Date beginTime, Date endTime){
+        if(beginTime.getTime()>=endTime.getTime()){
+            throw new BusinessException(ExceptionEnum.END_TIME_MORE_THAN_BEGIN_TIME.getCode(), ExceptionEnum.END_TIME_MORE_THAN_BEGIN_TIME.getMsg());
+        }
+        if(beginTime.getTime()<new Date().getTime()){
+            throw new BusinessException(ExceptionEnum.BEGIN_TIME_LESS_THAN_NOW_TIME.getCode(), String.format(ExceptionEnum.END_TIME_MORE_THAN_BEGIN_TIME.getMsg()));
         }
     }
 }
